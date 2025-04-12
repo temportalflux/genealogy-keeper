@@ -1,0 +1,66 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "1. [App] Build",
+			"command": "cargo",
+			"args": [ "tauri", "build" ],
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}/genflux-app"
+			}
+		},
+		{
+			"label": "2. [App] Serve",
+			"command": "cargo",
+			"args": [ "tauri", "dev" ],
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}/genflux-app"
+			}
+		},
+		{
+			"label": "3. [Web] Build",
+			"command": "trunk",
+			"args": [ "build" ],
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}/genflux-web"
+			}
+		},
+		{
+			"label": "4. [Web] Deploy",
+			"dependsOn": "3. [Web] Build",
+			"command": "netlify",
+			"args": [ "deploy", "--dir", "dist", "--alias", "local" ],
+			"group": "build",
+      "type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/genflux-web"
+			}
+		},
+		{
+			"label": "5. [Cargo] Format",
+			"command": "cargo",
+			"args": [ "fmt", "--all" ],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "6. [Cargo] Run Tests",
+			"command": "cargo",
+			"args": [ "test" ],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "7. [Cargo] Clean",
+			"command": "cargo",
+			"args": [ "clean" ],
+			"group": "build",
+			"problemMatcher": []
+		}
+	]
+}

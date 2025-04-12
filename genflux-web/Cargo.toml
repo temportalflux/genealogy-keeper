@@ -1,0 +1,67 @@
+[package]
+name = "genflux-web"
+description = ""
+repository = "https://github.com/temportalflux/genflux"
+license = "MIT OR Apache-2.0"
+authors = ["Dustin Yost <dustin.yost.t@gmail.com>"]
+version = "0.0.1"
+edition = "2024"
+
+[build-dependencies]
+convert_case = "0.8"
+
+# yew hooks always fail doctests due to 'hook lifetime
+[lib]
+doctest = false
+
+[[bin]]
+name = "bin"
+path = "src/web.rs"
+
+[dependencies]
+ui = { path = "../genflux-ui", package = "genflux-ui" }
+
+log = { version = "0.4", features = ["std"] }
+simplelog = "0.12"
+time = "0.3"
+anyhow = "1.0"
+thiserror = "^2.0"
+tracing-wasm = "^0.2"
+tracing = "^0.1"
+tracing-subscriber = "^0.3"
+
+futures = "0.3"
+tokio = { version="1.26", features=["sync"] }
+serde = "1.0"
+serde_json = "1.0"
+
+console_error_panic_hook = "0.1"
+wasm-bindgen = "^0.2"
+yew = { version = "0.21", features = ["csr"] }
+yew-router = { version = "0.18" }
+yewdux = "0.11"
+yew-hooks = "0.3"
+gloo-events = "0.2"
+gloo-storage = "0.3"
+gloo-utils = "0.2"
+gloo-timers = { version = "0.3", features = ["futures"] }
+web-sys = { version = "^0.3", features = [
+	"DataTransfer", "Document", "DomTokenList", "VisibilityState",
+	"HtmlCollection", "HtmlSelectElement", "HtmlInputElement", "HtmlTextAreaElement",
+	"Request", "Storage", "Window",
+	"Node", "NodeList",
+	"MediaQueryList", "MediaQueryListEvent",
+	"Event", "EventTarget", "KeyboardEvent",
+	"Performance", "Screen",
+	"UiEvent", "CssStyleDeclaration",
+	"IdbFactory", "IdbOpenDbRequest",
+] }
+wasm-timer = "0.2"
+wasm-bindgen-futures = "^0.4"
+serde-wasm-bindgen = "0.6"
+
+[target.'cfg(windows)'.dependencies]
+tokio = { version="1.26", features=["full"] }
+
+[dev-dependencies]
+trim-margin = "0.1.0"

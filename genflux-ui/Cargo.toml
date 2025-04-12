@@ -1,0 +1,10 @@
+[package]
+name = "genflux-ui"
+description = ""
+repository = "https://github.com/temportalflux/genflux"
+license = "MIT OR Apache-2.0"
+authors = ["Dustin Yost <dustin.yost.t@gmail.com>"]
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]

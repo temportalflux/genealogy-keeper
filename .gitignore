@@ -1,0 +1,5 @@
+target
+genflux-app/app/gen/
+genflux-app/frontend/dist/
+genflux-web/dist
+yost

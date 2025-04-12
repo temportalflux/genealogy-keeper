@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script async src="https://ga.jspm.io/npm:es-module-shims@1.7.2/dist/es-module-shims.js" crossorigin="anonymous"></script>
+		<script type="importmap">
+			{
+				"imports": {
+					"bootstrap": "https://ga.jspm.io/npm:bootstrap@5.2.3/dist/js/bootstrap.esm.js"
+				},
+				"scopes": {
+					"https://ga.jspm.io/": {
+						"@popperjs/core": "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/index.js"
+					}
+				}
+			}
+		</script>
+
+		<meta charset="utf-8" />
+		<title>Genealogy Keeper</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<!-- Trunk operations: https://trunkrs.dev/assets -->
+		<!-- Set the basename from the public-url provided to the build command -->
+		<base data-trunk-public-url />
+		<!-- Execute the wasm generated from source -->
+		<link data-trunk rel="rust" data-bin="bin" />
+
+		<link href='https://fonts.googleapis.com/css?family=Ubuntu Mono' rel='stylesheet' />
+		
+		<!--
+			This forces bootstrap to load so things like dropdowns work,
+			which it would otherwise not do if a component doesnt explicitly require it (modals & tooltips).
+		-->
+		<script type="module">
+			import * as bootstrap from 'bootstrap';
+		</script>
+
+		<!-- Platform specific includes -->
+		<link data-trunk rel="copy-file" href="glue.js" />
+		<link data-trunk rel="scss" href="index.scss" />
+		<link data-trunk rel="copy-dir" href="../../genflux-ui/assets" />
+		
+	</head>
+	<body></body>
+</html>

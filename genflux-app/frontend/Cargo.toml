@@ -1,0 +1,67 @@
+[package]
+name = "genflux-app-frontend"
+description = ""
+repository = "https://github.com/temportalflux/genflux"
+license = "MIT OR Apache-2.0"
+authors = ["Dustin Yost <dustin.yost.t@gmail.com>"]
+version = "0.0.1"
+edition = "2021"
+
+[[bin]]
+name = "bin"
+path = "src/frontend.rs"
+
+[dependencies]
+tauri-sys = { git = "https://github.com/JonasKruckenberg/tauri-sys", branch = "v2", features = ["all"] }
+shared = { path = "../shared", features=["wasm"], package = "genflux-app-shared" }
+ui = { path = "../../genflux-ui", package = "genflux-ui" }
+log = { version = "0.4", features = ["std"] }
+
+any-range = "0.1"
+anyhow = "1.0"
+thiserror = "2"
+enumset = "1.0"
+multimap = "0.10"
+enum-map = "2.6"
+convert_case = "0.8"
+dyn-clone = "1.0"
+simplelog = "0.12"
+num-traits = "0.2"
+downcast-rs = "2"
+async-channel = "2.2"
+derivative = "2.2"
+itertools = "0.14"
+js-sys = "0.3"
+regex = "1.8"
+
+serde = "1.0"
+serde-wasm-bindgen = "0.6"
+
+futures = "0.3"
+futures-util = "0.3"
+reqwest = { version = "0.12", features = ["json"] }
+
+web-sys = { version = "0.3", features = [
+	"DataTransfer", "Document", "DomTokenList", "VisibilityState",
+	"HtmlCollection", "HtmlSelectElement", "HtmlInputElement", "HtmlTextAreaElement",
+	"Request", "Storage", "Window",
+	"Node", "NodeList",
+	"MediaQueryList", "MediaQueryListEvent",
+	"Event", "EventTarget", "KeyboardEvent",
+	"Performance", "Screen",
+	"UiEvent", "CssStyleDeclaration",
+	"IdbFactory", "IdbOpenDbRequest",
+] }
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+gloo-events = "0.2"
+gloo-storage = "0.3"
+gloo-utils = "0.2"
+gloo-timers = { version = "0.3", features = ["futures"] }
+fluvio-wasm-timer = "0.2"
+wasm-timer = "0.2"
+svgtypes = "0.15"
+
+yew = { version = "0.21", features = ["csr"] }
+yewdux = "0.11"
+yew-hooks = "0.3"

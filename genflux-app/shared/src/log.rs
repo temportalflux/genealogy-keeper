@@ -1,0 +1,10 @@
+use serde::{Serialize, Deserialize};
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct LogRecord {
+	pub level: ::log::Level,
+	pub target: String,
+	pub file: Option<String>,
+	pub line: Option<u32>,
+	pub args: String,
+}
