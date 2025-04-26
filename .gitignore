@@ -3,3 +3,4 @@ genflux-app/app/gen/
 genflux-app/frontend/dist/
 genflux-web/dist
 yost
+crates/tldraw/node_modules

@@ -1,5 +1,6 @@
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
+use tldraw;
 
 mod logging;
 pub mod utility;
@@ -27,5 +28,8 @@ fn main() {}
 
 #[function_component]
 fn App() -> Html {
-	html!("GenFlux Desktop")
+	html! {<>
+		{"GenFlux Desktop"}
+		<tldraw::TlDraw />
+	</>}
 }

@@ -3,5 +3,6 @@ resolver = "2"
 members = [
 	"genflux-dat", "genflux-ui",
 	"genflux-app/app", "genflux-app/frontend", "genflux-app/shared",
-	"genflux-web"
+	"genflux-web",
+	"crates/tldraw",
 ]

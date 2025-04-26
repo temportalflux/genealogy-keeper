@@ -1,0 +1,10 @@
+{
+	"type": "module",
+	"scripts": {
+		"esbuild": "node esbuild.js"
+	},
+	"dependencies": {
+		"esbuild": "^0.25.2",
+		"tldraw": "^3.12.0"
+	}
+}
