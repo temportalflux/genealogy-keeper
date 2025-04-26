@@ -1,0 +1,387 @@
+// Reconceptualization of [GEDCOM](https://en.wikipedia.org/wiki/GEDCOM)
+document {
+	info {
+		title "GenDat Schema" lang=en
+		description "Schema for GenDat KDL documents" lang=en
+		author "Dustin Yost" {
+			link "https://github.com/temportalflux" rel=self
+		}
+		link "https://github.com/temportalflux/genflux" rel=documentation
+		license "MIT License" spdx=MIT {
+			link "https://opensource.org/license/mit" lang=en
+		}
+		license "Apache License Version 2.0" spdx=Apache-2.0 {
+			link "https://www.apache.org/licenses/LICENSE-2.0" lang=en
+		}
+		//published "2021-08-31"
+		//modified "2021-09-01"
+	}
+	node person description="An individual in the geneaological tree" {
+		value description="The unique identifier of the person. Should be unique amongst all persons in the project." {
+			type string
+			min 1
+			max 1
+		}
+		children {
+			node name {
+				value description="A given or surname. Annotate surnames with the (surname) type/format." {
+					type string
+					min 1
+				}
+				prop start description="The start date of the name (for colloquial or legal name changes). Can be omitted if start date is unknown or unimportant." {
+					type string
+					format date
+				}
+			}
+			node sex description="The sex of the person, annotated AssignedAtBirth or AssignedAtDate" {
+				value description="Assigned sex" {
+					type string
+					format AssignedAtBirth
+					min 1
+					max 1
+					enum Male Female Intersex
+				}
+				prop start description="The start date of the sex (e.g. transexual transitions). Omitted if AssignedAtBirth." {
+					type string
+					format date
+				}
+			}
+			node pronoun description="A pronoun group that the individual uses/used. Multiple nodes can be provided." {
+				value description="Nominative pronoun: [he,she,they,xi]" {
+					type string
+					min 1
+					max 1
+				}
+				value description="Accusative/Objective pronoun: [him,her,them,xin]" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			// TODO: Gender? if so, need to support transgender and assumed geneder (for historical documents)
+		}
+	}
+	node event description="An event involving one or more persons" {
+		value description="The event type" {
+			type string
+			min 1
+			max 1
+			enum birth foster adoption death marriage divorce
+		}
+		value description="The date of the event" {
+			type string
+			format date
+			min 1
+			max 1
+		}
+		prop id description="The id of the event, unique within the project. Used to associate other data to this event" {
+			type string
+			max 1
+		}
+		// birth
+		/*
+		event birth (date)"<DATE>" {
+			// the persons birthed, can be multiple
+			offspring <PERSON ID>
+			// a dna donor, biological parent or sperm/egg donor
+			donor <PERSON ID>
+			donor <PERSON ID>
+			carrier <PERSON ID> // the person who carried the pregnancy
+			location "<LOCATION>" // optional, the location the event took place at
+			notes "<TEXT>" // optional, some notes about the event
+		}
+		*/
+		children {
+			node offspring description="A person who was born" {
+				min 1
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node donor description="A person who donated genetic material to the pregnancy (either organically or by science)" {
+				min 2
+				max 2
+				value description="The id of the person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node carrier description="The person who carried the pregnancy (either as a biological parent or as a surrogate)" {
+				min 1
+				max 1
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node location description="The location the event took place at" {
+				max 1
+				value description="The location description" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node notes description="Any notes about the event" {
+				max 1
+				value description="The note text" {
+					type string
+					min 1
+					max 1
+				}
+			}
+		}
+		// foster
+		/*
+		event foster (date)"<DATE>" id="<EVENT ID>" {
+			child "<PERSON ID>"
+			parent "<PERSON ID>"
+			location "<LOCATION>" // optional, the location the event took place at
+			notes "<TEXT>" // optional, some notes about the event
+		}
+		*/
+		children {
+			node child description="A person fostered by the parent(s)" {
+				min 1
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node parent description="A person who fostered the child(ren)" {
+				min 1
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node location description="The location the event took place at" {
+				max 1
+				value description="The location description" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node notes description="Any notes about the event" {
+				max 1
+				value description="The note text" {
+					type string
+					min 1
+					max 1
+				}
+			}
+		}
+		// adoption
+		/*
+		event adoption (date)"<DATE>" {
+			child "<PERSON ID>"
+			parent "<PERSON ID>"
+			location "<LOCATION>" // optional, the location the event took place at
+			notes "<TEXT>" // optional, some notes about the event
+		}
+		*/
+		children {
+			node child description="A person adopted by the parent(s)" {
+				min 1
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node parent description="A person who adopted the child(ren)" {
+				min 1
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node location description="The location the event took place at" {
+				max 1
+				value description="The location description" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node notes description="Any notes about the event" {
+				max 1
+				value description="The note text" {
+					type string
+					min 1
+					max 1
+				}
+			}
+		}
+		// death
+		/*
+		event death (date)"<DATE>" {
+			person "<PERSON ID>"
+			location "<LOCATION>" // optional, the location the event took place at
+			notes "<TEXT>" // optional, some notes about the event
+		}
+		*/
+		children {
+			node person description="The person who died" {
+				min 1
+				max 1
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node location description="The location the event took place at" {
+				max 1
+				value description="The location description" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node notes description="Any notes about the event" {
+				max 1
+				value description="The note text" {
+					type string
+					min 1
+					max 1
+				}
+			}
+		}
+		// marriage
+		/*
+		event marriage (date)"<DATE>" {
+			person "<PERSON ID>"
+			person "<PERSON ID>"
+			location "<LOCATION>" // optional, the location the event took place at
+			notes "<TEXT>" // optional, some notes about the event
+		}
+		*/
+		children {
+			node person description="The persons who got married" {
+				min 2
+				max 2
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node location description="The location the event took place at" {
+				max 1
+				value description="The location description" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node notes description="Any notes about the event" {
+				max 1
+				value description="The note text" {
+					type string
+					min 1
+					max 1
+				}
+			}
+		}
+		// divorce
+		/*
+		event divorce (date)"<DATE>" {
+			person "<PERSON ID>"
+			person "<PERSON ID>"
+			location "<LOCATION>" // optional, the location the event took place at
+			notes "<TEXT>" // optional, some notes about the event
+		}
+		*/
+		children {
+			node person description="The persons who were married" {
+				min 2
+				max 2
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node location description="The location the event took place at" {
+				max 1
+				value description="The location description" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node notes description="Any notes about the event" {
+				max 1
+				value description="The note text" {
+					type string
+					min 1
+					max 1
+				}
+			}
+		}
+	}
+	// A connection between two or more persons
+	node link {
+		value description="The type of connection between involved persons" {
+			type string
+			min 1
+			max 1
+			enum parent partner
+		}
+		// parent
+		/*
+		link parent {
+			event "<EVENT ID>" // for birth, foster, or adoption events
+			date (date)"<DATE>" // if not event associated
+			child "<PERSON ID>"
+			parent "<PERSON ID>"
+			parent "<PERSON ID>"
+		}
+		*/
+		children {
+			node event description="The event this link was initiated during (e.g. birth, foster, or adoption)" {
+				max 1
+				value description="The id of an event" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node date description="If no event is associated, a date can be explicitly provided" {
+				max 1
+				value description="The date the link started at" {
+					type string
+					format date
+					min 1
+					max 1
+				}
+			}
+			node child description="A person cared for by the parent(s)" {
+				min 1
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+			node parent description="A person who took on the parenting role for the child" {
+				min 1
+				value description="The id of a person" {
+					type string
+					min 1
+					max 1
+				}
+			}
+		}
+		// TODO: partner/connection - link to identify a connection between two people which is non-geneaological (friend, partner/SO, lover, etc)
+	}
+}
