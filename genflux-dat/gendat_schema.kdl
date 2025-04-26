@@ -16,6 +16,16 @@ document {
 		//published "2021-08-31"
 		//modified "2021-09-01"
 	}
+	node schema description="A link to the schema used for this document" {
+		min 1
+		max 1
+		value description="The url of the schema" {
+			type string
+			format url
+			min 1
+			max 1
+		}
+	}
 	node person description="An individual in the geneaological tree" {
 		value description="The unique identifier of the person. Should be unique amongst all persons in the project." {
 			type string
