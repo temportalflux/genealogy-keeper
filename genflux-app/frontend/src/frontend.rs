@@ -13,7 +13,8 @@ extern "C" {
 
 #[cfg(target_family = "wasm")]
 fn main() {
-	if is_bound() {
+	if false {
+	//if is_bound() {
 		let _ = ::log::set_boxed_logger(Box::new(logging::tauri::Logger));
 		::log::set_max_level(log::LevelFilter::Trace);
 	} else {
@@ -30,6 +31,6 @@ fn main() {}
 fn App() -> Html {
 	html! {<>
 		{"GenFlux Desktop"}
-		<tldraw::TlDraw />
+		<tldraw::Tldraw />
 	</>}
 }
