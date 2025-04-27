@@ -5909,6 +5909,7 @@ name = "tldraw"
 version = "0.0.1"
 dependencies = [
  "log",
+ "paste",
  "serde",
  "serde-wasm-bindgen 0.6.5",
  "wasm-bindgen",
