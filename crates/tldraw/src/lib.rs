@@ -54,7 +54,9 @@ macro_rules! component_binding {
 
 #[derive(Clone, PartialEq, Properties, Serialize)]
 pub struct TldrawProps {
-
+	#[prop_or_default]
+	#[serde(rename="inferDarkMode")]
+	pub infer_dark_mode: bool,
 }
 component_binding!("/bindings/tldraw.js", tldraw_comp, Tldraw, TldrawProps);
 pub use tldraw_comp::Tldraw;

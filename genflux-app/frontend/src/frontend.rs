@@ -27,10 +27,12 @@ fn main() {
 #[cfg(target_family = "windows")]
 fn main() {}
 
+// TODO: Next - explore ways to customize the whiteboard https://tldraw.dev/examples/basic/remove-tool
+
 #[function_component]
 fn App() -> Html {
 	html! {<>
 		{"GenFlux Desktop"}
-		<tldraw::Tldraw />
+		<tldraw::Tldraw infer_dark_mode={true} />
 	</>}
 }
