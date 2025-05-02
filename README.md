@@ -4,3 +4,5 @@ Genealogy Keeper is a hobby side-project for exploring a new take on genealogica
 
 https://harrisonmilbradt.com/articles/canvas-panning-and-zooming
 https://en.wikipedia.org/wiki/Genealogy_software
+
+Use [juniper](https://docs.rs/juniper/latest/juniper/) to create GraphQL api for frontend to access backend. Backend will scan project directories and load content as necessary, serving access & mutations via GraphQL to frontend.

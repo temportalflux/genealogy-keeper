@@ -15,7 +15,7 @@
 		{
 			"label": "2. [App] Serve",
 			"command": "cargo",
-			"args": [ "tauri", "dev" ],
+			"args": [ "tauri", "dev", "--no-watch" ],
 			"group": "build",
 			"options": {
 				"cwd": "${workspaceFolder}/crates/desktop"
