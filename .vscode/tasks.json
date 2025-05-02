@@ -4,12 +4,12 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "1. [App] Build",
+			"label": "1. [App] Build Debug",
 			"command": "cargo",
-			"args": [ "tauri", "build" ],
+			"args": [ "tauri", "build", "--debug" ],
 			"group": "build",
 			"options": {
-				"cwd": "${workspaceFolder}/genkeeper-desktop"
+				"cwd": "${workspaceFolder}/crates/desktop"
 			}
 		},
 		{
@@ -18,7 +18,7 @@
 			"args": [ "tauri", "dev" ],
 			"group": "build",
 			"options": {
-				"cwd": "${workspaceFolder}/genkeeper-desktop"
+				"cwd": "${workspaceFolder}/crates/desktop"
 			}
 		},
 		{
@@ -27,7 +27,7 @@
 			"args": [ "build" ],
 			"group": "build",
 			"options": {
-				"cwd": "${workspaceFolder}/genkeeper-web"
+				"cwd": "${workspaceFolder}/crates/web"
 			}
 		},
 		{
@@ -38,7 +38,7 @@
 			"group": "build",
       "type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/genkeeper-web"
+				"cwd": "${workspaceFolder}/crates/web"
 			}
 		},
 		{
@@ -56,7 +56,16 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "7. [Cargo] Clean",
+			"label": "7. [App] Build Release",
+			"command": "cargo",
+			"args": [ "tauri", "build" ],
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}/crates/desktop"
+			}
+		},
+		{
+			"label": "8. [Cargo] Clean",
 			"command": "cargo",
 			"args": [ "clean" ],
 			"group": "build",

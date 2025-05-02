@@ -1,6 +1,6 @@
 target
-genkeeper-desktop/app/gen/
-genkeeper-desktop/frontend/dist/
-genkeeper-web/dist
-yost
+crates/desktop/app/gen/
+crates/desktop/frontend/dist/
+crates/web/dist
 crates/tldraw/node_modules
+yost

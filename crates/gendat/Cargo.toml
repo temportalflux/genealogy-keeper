@@ -8,7 +8,7 @@ version = "0.0.1"
 edition = "2024"
 
 [dependencies]
-kdlize = { path = "../crates/kdlize" }
+kdlize = { path = "../kdlize" }
 kdl = { version = "6", git = "https://github.com/kdl-org/kdl-rs", features=["v1", "v1-fallback"] }
 time = { version = "0.3", features = ["parsing", "formatting"]}
 thiserror = "^2.0"

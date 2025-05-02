@@ -1,8 +1,8 @@
 [workspace]
 resolver = "2"
 members = [
-	"gendat", "genkeeper-ui",
-	"genkeeper-desktop/app", "genkeeper-desktop/frontend", "genkeeper-desktop/shared",
-	"genkeeper-web",
+	"crates/gendat", "crates/ui",
+	"crates/desktop/app", "crates/desktop/frontend", "crates/desktop/shared",
+	"crates/web",
 	"crates/tldraw",
 ]

@@ -14,6 +14,9 @@
 				}
 			}
 		</script>
+		<!--
+		"tldraw": "https://ga.jspm.io/npm:tldraw@3.12.0/dist-esm/index.mjs"
+		-->
 
 		<meta charset="utf-8" />
 		<title>Genealogy Keeper</title>
@@ -36,9 +39,9 @@
 		</script>
 
 		<!-- Platform specific includes -->
-		<link data-trunk rel="copy-file" href="netlify.toml" />
 		<link data-trunk rel="scss" href="index.scss" />
-		<link data-trunk rel="copy-dir" href="../genflux-ui/assets" />
+		<link data-trunk rel="copy-dir" href="../../ui/assets" />
+		<link data-trunk rel="css" href="../../tldraw/bindings/tldraw.css" />
 		
 	</head>
 	<body></body>

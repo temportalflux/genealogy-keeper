@@ -19,7 +19,7 @@ name = "bin"
 path = "src/web.rs"
 
 [dependencies]
-ui = { path = "../genkeeper-ui", package = "genkeeper-ui" }
+ui = { path = "../ui", package = "genkeeper-ui" }
 
 log = { version = "0.4", features = ["std"] }
 simplelog = "0.12"

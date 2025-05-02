@@ -14,8 +14,8 @@ path = "src/frontend.rs"
 [dependencies]
 tauri-sys = { git = "https://github.com/JonasKruckenberg/tauri-sys", branch = "v2", features = ["all"] }
 shared = { path = "../shared", features=["wasm"], package = "genkeeper-desktop-shared" }
-ui = { path = "../../genkeeper-ui", package = "genkeeper-ui" }
-tldraw = { path = "../../crates/tldraw" }
+ui = { path = "../../ui", package = "genkeeper-ui" }
+tldraw = { path = "../../tldraw" }
 
 log = { version = "0.4", features = ["std"] }
 
