@@ -1,5 +1,5 @@
 [package]
-name = "genflux-web"
+name = "genkeeper-web"
 description = ""
 repository = "https://github.com/temportalflux/genflux"
 license = "MIT OR Apache-2.0"
@@ -19,7 +19,7 @@ name = "bin"
 path = "src/web.rs"
 
 [dependencies]
-ui = { path = "../genflux-ui", package = "genflux-ui" }
+ui = { path = "../genkeeper-ui", package = "genkeeper-ui" }
 
 log = { version = "0.4", features = ["std"] }
 simplelog = "0.12"

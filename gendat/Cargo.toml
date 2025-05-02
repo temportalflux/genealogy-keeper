@@ -1,5 +1,5 @@
 [package]
-name = "genflux-dat"
+name = "gendat"
 description = ""
 repository = "https://github.com/temportalflux/genflux"
 license = "MIT OR Apache-2.0"

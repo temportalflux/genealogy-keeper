@@ -1,4 +1,4 @@
-use genflux_web::*;
+use genkeeper_web::*;
 
 #[cfg(target_family = "wasm")]
 fn main() {

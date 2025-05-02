@@ -1,6 +1,6 @@
 target
-genflux-app/app/gen/
-genflux-app/frontend/dist/
-genflux-web/dist
+genkeeper-desktop/app/gen/
+genkeeper-desktop/frontend/dist/
+genkeeper-web/dist
 yost
 crates/tldraw/node_modules

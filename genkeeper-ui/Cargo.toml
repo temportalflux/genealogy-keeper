@@ -1,5 +1,5 @@
 [package]
-name = "genflux-ui"
+name = "genkeeper-ui"
 description = ""
 repository = "https://github.com/temportalflux/genflux"
 license = "MIT OR Apache-2.0"

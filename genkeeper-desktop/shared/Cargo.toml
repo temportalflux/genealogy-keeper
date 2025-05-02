@@ -1,5 +1,5 @@
 [package]
-name = "genflux-app-shared"
+name = "genkeeper-desktop-shared"
 description = ""
 repository = "https://github.com/temportalflux/keyboard-overlay"
 license = "MIT OR Apache-2.0"

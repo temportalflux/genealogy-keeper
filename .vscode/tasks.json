@@ -9,7 +9,7 @@
 			"args": [ "tauri", "build" ],
 			"group": "build",
 			"options": {
-				"cwd": "${workspaceFolder}/genflux-app"
+				"cwd": "${workspaceFolder}/genkeeper-desktop"
 			}
 		},
 		{
@@ -18,7 +18,7 @@
 			"args": [ "tauri", "dev" ],
 			"group": "build",
 			"options": {
-				"cwd": "${workspaceFolder}/genflux-app"
+				"cwd": "${workspaceFolder}/genkeeper-desktop"
 			}
 		},
 		{
@@ -27,7 +27,7 @@
 			"args": [ "build" ],
 			"group": "build",
 			"options": {
-				"cwd": "${workspaceFolder}/genflux-web"
+				"cwd": "${workspaceFolder}/genkeeper-web"
 			}
 		},
 		{
@@ -38,7 +38,7 @@
 			"group": "build",
       "type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/genflux-web"
+				"cwd": "${workspaceFolder}/genkeeper-web"
 			}
 		},
 		{

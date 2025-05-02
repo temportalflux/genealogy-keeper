@@ -1,5 +1,5 @@
 [package]
-name = "genflux-app-frontend"
+name = "genkeeper-desktop-frontend"
 description = ""
 repository = "https://github.com/temportalflux/genflux"
 license = "MIT OR Apache-2.0"
@@ -13,8 +13,8 @@ path = "src/frontend.rs"
 
 [dependencies]
 tauri-sys = { git = "https://github.com/JonasKruckenberg/tauri-sys", branch = "v2", features = ["all"] }
-shared = { path = "../shared", features=["wasm"], package = "genflux-app-shared" }
-ui = { path = "../../genflux-ui", package = "genflux-ui" }
+shared = { path = "../shared", features=["wasm"], package = "genkeeper-desktop-shared" }
+ui = { path = "../../genkeeper-ui", package = "genkeeper-ui" }
 tldraw = { path = "../../crates/tldraw" }
 
 log = { version = "0.4", features = ["std"] }

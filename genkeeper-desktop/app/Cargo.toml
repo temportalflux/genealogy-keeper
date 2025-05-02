@@ -1,5 +1,5 @@
 [package]
-name = "genflux-app"
+name = "genkeeper-desktop-app"
 description = ""
 repository = "https://github.com/temportalflux/genflux"
 license = "MIT OR Apache-2.0"
@@ -23,7 +23,7 @@ custom-protocol = [ "tauri/custom-protocol" ]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
-shared = { path = "../shared", package = "genflux-app-shared" }
+shared = { path = "../shared", package = "genkeeper-desktop-shared" }
 
 anyhow = "1.0"
 thiserror = "2"
