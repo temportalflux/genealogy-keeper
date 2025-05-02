@@ -6,7 +6,7 @@ document {
 		author "Dustin Yost" {
 			link "https://github.com/temportalflux" rel=self
 		}
-		link "https://github.com/temportalflux/genflux" rel=documentation
+		link "https://github.com/temportalflux/genealogy-keeper" rel=documentation
 		license "MIT License" spdx=MIT {
 			link "https://opensource.org/license/mit" lang=en
 		}
