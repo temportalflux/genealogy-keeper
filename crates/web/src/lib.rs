@@ -4,5 +4,5 @@ pub mod logging;
 
 #[function_component]
 pub fn App() -> Html {
-	html!("GenFlux Web")
+	html!("Genealogy Keeper: Web")
 }

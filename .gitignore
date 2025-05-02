@@ -1,6 +1,7 @@
 target
 crates/desktop/app/gen/
 crates/desktop/app/local_projects
+crates/desktop/app/*.log
 crates/desktop/frontend/dist/
 crates/web/dist
 crates/tldraw/node_modules

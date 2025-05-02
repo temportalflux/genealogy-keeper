@@ -4,16 +4,7 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "1. [App] Build Debug",
-			"command": "cargo",
-			"args": [ "tauri", "build", "--debug" ],
-			"group": "build",
-			"options": {
-				"cwd": "${workspaceFolder}/crates/desktop"
-			}
-		},
-		{
-			"label": "2. [App] Serve",
+			"label": "1. [App] Run Debug",
 			"command": "cargo",
 			"args": [ "tauri", "dev", "--no-watch" ],
 			"group": "build",
@@ -22,7 +13,25 @@
 			}
 		},
 		{
-			"label": "3. [Web] Build",
+			"label": "2. [App] Build Debug",
+			"command": "cargo",
+			"args": [ "tauri", "build", "--debug" ],
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}/crates/desktop"
+			}
+		},
+		{
+			"label": "3. [App] Build Release",
+			"command": "cargo",
+			"args": [ "tauri", "build" ],
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}/crates/desktop"
+			}
+		},
+		{
+			"label": "4. [Web] Build",
 			"command": "trunk",
 			"args": [ "build" ],
 			"group": "build",
@@ -31,7 +40,7 @@
 			}
 		},
 		{
-			"label": "4. [Web] Deploy",
+			"label": "5. [Web] Deploy",
 			"dependsOn": "3. [Web] Build",
 			"command": "netlify",
 			"args": [ "deploy", "--dir", "dist", "--alias", "local" ],
@@ -42,27 +51,18 @@
 			}
 		},
 		{
-			"label": "5. [Cargo] Format",
+			"label": "6. [Cargo] Format",
 			"command": "cargo",
 			"args": [ "fmt", "--all" ],
 			"group": "build",
 			"problemMatcher": []
 		},
 		{
-			"label": "6. [Cargo] Run Tests",
+			"label": "7. [Cargo] Run Tests",
 			"command": "cargo",
 			"args": [ "test" ],
 			"group": "build",
 			"problemMatcher": []
-		},
-		{
-			"label": "7. [App] Build Release",
-			"command": "cargo",
-			"args": [ "tauri", "build" ],
-			"group": "build",
-			"options": {
-				"cwd": "${workspaceFolder}/crates/desktop"
-			}
 		},
 		{
 			"label": "8. [Cargo] Clean",

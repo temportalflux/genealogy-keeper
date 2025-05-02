@@ -32,7 +32,7 @@ fn main() {}
 #[function_component]
 fn App() -> Html {
 	html! {<>
-		{"GenFlux Desktop"}
+		{"Genealogy Keeper: Desktop"}
 		<tldraw::Tldraw infer_dark_mode={true} />
 	</>}
 }

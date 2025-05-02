@@ -13,8 +13,11 @@ fn main() -> anyhow::Result<()> {
 				.clear_targets()
 				.targets([
 					Target::new(TargetKind::Stdout),
-					// TODO: this is never truncated
-					Target::new(TargetKind::LogDir { file_name: Some("GenKeeper".into()) }),
+					// TODO: files are never truncated
+					match cfg!(debug_assertions) {
+						true => Target::new(TargetKind::Folder { path: std::env::current_dir()?, file_name: Some("GenKeeper".into()) }),
+						false => Target::new(TargetKind::LogDir { file_name: Some("GenKeeper".into()) }),
+					},
 					Target::new(TargetKind::Webview),
 				])
 				.filter(|record| {
