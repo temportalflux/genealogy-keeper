@@ -6,6 +6,15 @@ pub enum Link {
 	Parent(Parentage)
 }
 
+kdlize::impl_kdl_node!(Link, "link");
+
+impl<'doc> kdlize::FromKdlNode<'doc, ()> for Link {
+	type Error = crate::Error;
+	fn from_kdl(node: &mut kdlize::reader::Node<'doc, ()>) -> Result<Self, Self::Error> {
+		todo!();
+	}
+}
+
 // Parent/Child relationship (ancestor? parentage?)
 #[derive(Clone, Debug, PartialEq)]
 pub struct Parentage {

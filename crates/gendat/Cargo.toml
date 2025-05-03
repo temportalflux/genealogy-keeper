@@ -12,6 +12,8 @@ kdlize = { path = "../kdlize" }
 kdl = { version = "6", git = "https://github.com/kdl-org/kdl-rs", features=["v1", "v1-fallback"] }
 time = { version = "0.3", features = ["parsing", "formatting"]}
 thiserror = "^2.0"
+miette = "^7.6"
+lazy_static = "1.5"
 
 [dev-dependencies]
 trim-margin = "0.1.0"

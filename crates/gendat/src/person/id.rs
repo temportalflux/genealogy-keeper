@@ -1,5 +1,5 @@
 
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct PersonId(String);
 
 kdlize::impl_kdlvalue_str!(PersonId);
