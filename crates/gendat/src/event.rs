@@ -12,8 +12,8 @@ pub enum Event {
 kdlize::impl_kdl_node!(Event, "event");
 
 impl<'doc> kdlize::FromKdlNode<'doc, ()> for Event {
-	type Error = crate::Error;
-	fn from_kdl(node: &mut kdlize::reader::Node<'doc, ()>) -> Result<Self, Self::Error> {
+	type Error = miette::Error;
+	fn from_kdl(_node: &mut kdlize::reader::Node<'doc, ()>) -> Result<Self, Self::Error> {
 		todo!();
 	}
 }

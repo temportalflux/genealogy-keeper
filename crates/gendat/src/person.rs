@@ -27,9 +27,14 @@ impl Person {
 }
 
 impl<'doc> kdlize::FromKdlNode<'doc, ()> for Person {
-	type Error = crate::Error;
+	type Error = miette::Error;
 	fn from_kdl(node: &mut kdlize::reader::Node<'doc, ()>) -> Result<Self, Self::Error> {
-		todo!();
-		//Ok(Self { id, names, pronouns, sex_at_birth, notes })
+		use kdlize::reader::*;
+		let id = node.next()?.to()?;
+		let names = node.children("name").to().collect()?;
+		let pronouns = node.children("pronoun").to().collect()?;
+		let sex_at_birth = node.child("sex").ok().next()?.to()?;
+		let notes = node.child("notes").ok().next()?.to()?;
+		Ok(Self { id, names, pronouns, sex_at_birth, notes })
 	}
 }
