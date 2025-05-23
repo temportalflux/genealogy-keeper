@@ -1509,6 +1509,7 @@ dependencies = [
  "lazy_static",
  "log",
  "miette",
+ "regex",
  "thiserror 2.0.12",
  "time",
  "trim-margin",
