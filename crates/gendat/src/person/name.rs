@@ -10,6 +10,7 @@ pub struct PersonName {
 enum TypedName {
 	Given(String),
 	Surname(String),
+	Suffix(String),
 }
 
 #[derive(thiserror::Error, Debug, PartialEq, miette::Diagnostic)]
@@ -27,6 +28,7 @@ impl<'doc> kdlize::FromKdlNode<'doc, ()> for PersonName {
 			names.push(match entry.ty().map(|id| id.value()) {
 				None => TypedName::Given(name),
 				Some("surname") => TypedName::Surname(name),
+				Some("suffix") => TypedName::Suffix(name),
 				Some(type_id) => Err(UnsupportedPersonNameType(type_id.into()))?,
 			});
 		}
@@ -43,6 +45,7 @@ impl kdlize::AsKdlNode for PersonName {
 			match typed_name {
 				TypedName::Given(name) => node += Value(name),
 				TypedName::Surname(name) => node += Typed("surname", Value(name)),
+				TypedName::Suffix(name) => node += Typed("suffix", Value(name)),
 			}
 		}
 		node += OmitIfEmpty(Property("start", Value(&self.started_at)));
