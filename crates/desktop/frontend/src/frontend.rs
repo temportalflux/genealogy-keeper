@@ -1,6 +1,6 @@
+use tldraw;
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
-use tldraw;
 
 mod logging;
 pub mod utility;
@@ -14,7 +14,7 @@ extern "C" {
 #[cfg(target_family = "wasm")]
 fn main() {
 	if false {
-	//if is_bound() {
+		//if is_bound() {
 		let _ = ::log::set_boxed_logger(Box::new(logging::tauri::Logger));
 		::log::set_max_level(log::LevelFilter::Trace);
 	} else {
@@ -33,6 +33,21 @@ fn main() {}
 fn App() -> Html {
 	html! {<>
 		{"Genealogy Keeper: Desktop"}
-		<tldraw::Tldraw infer_dark_mode={true} />
+		<tldraw::Tldraw
+			infer_dark_mode={true}
+			components={tldraw::ComponentProps {
+				interface: tldraw::InterfaceComponentProps {
+					style_panel: tldraw::ComponentConfig::Remove,
+					..Default::default()
+				},
+				..Default::default()
+			}}
+			overrides={tldraw::Overrides {
+				tools: [
+					(tldraw::ToolKind::Draw, tldraw::ToolInit::Remove),
+					(tldraw::ToolKind::Text, tldraw::ToolInit::Remove),
+				].into(),
+			}}
+		/>
 	</>}
 }

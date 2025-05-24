@@ -5780,6 +5780,9 @@ checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
 name = "tldraw"
 version = "0.0.1"
 dependencies = [
+ "derivative",
+ "gloo-utils 0.2.0",
+ "js-sys",
  "log",
  "paste",
  "serde",
