@@ -61,29 +61,35 @@ impl std::str::FromStr for Date {
 			let year_str = captures.get(1).map(|m| m.as_str());
 			let month_str = captures.get(2).map(|m| m.as_str());
 			let year_month = year_str.zip(month_str);
-			let year_month = year_month.map(|(year_str, month_str)| {
-				let year_res = year_str.parse::<i32>();
-				let month_res = month_str.parse::<time::Month>();
-				year_res.ok().zip(month_res.ok())
-			}).flatten();
-			if let Some((year, month)) = year_month
-			{
+			let year_month = year_month
+				.map(|(year_str, month_str)| {
+					let year_res = year_str.parse::<i32>();
+					let month_res = month_str.parse::<time::Month>();
+					year_res.ok().zip(month_res.ok())
+				})
+				.flatten();
+			if let Some((year, month)) = year_month {
 				return Ok(Self::YearMonth(year, month));
 			}
 		}
 
-		Err(err).into_diagnostic().with_context(|| "failed to parse as a date-time-offset")
+		Err(err)
+			.into_diagnostic()
+			.with_context(|| "failed to parse as a date-time-offset")
 	}
 }
 
 impl std::fmt::Display for Date {
 	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-		write!(f, "{}", match self {
-			Self::Year(year) => year.to_string(),
-			Self::YearMonth(year, month) => format!("{year:04}-{:02}", *month as u8),
-			Self::NoTime(date) => date.format(&time::format_description::well_known::Rfc3339).unwrap(),
-			Self::WithTime(offset) => offset.format(&time::format_description::well_known::Rfc3339).unwrap(),
-		})
+		write!(
+			f,
+			"{}",
+			match self {
+				Self::Year(year) => year.to_string(),
+				Self::YearMonth(year, month) => format!("{year:04}-{:02}", *month as u8),
+				Self::NoTime(date) => date.format(&time::format_description::well_known::Rfc3339).unwrap(),
+				Self::WithTime(offset) => offset.format(&time::format_description::well_known::Rfc3339).unwrap(),
+			}
+		)
 	}
 }
-

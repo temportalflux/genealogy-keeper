@@ -16,8 +16,13 @@ fn main() -> anyhow::Result<()> {
 					Target::new(TargetKind::Stdout),
 					// TODO: files are never truncated
 					match cfg!(debug_assertions) {
-						true => Target::new(TargetKind::Folder { path: std::env::current_dir()?, file_name: Some("GenKeeper".into()) }),
-						false => Target::new(TargetKind::LogDir { file_name: Some("GenKeeper".into()) }),
+						true => Target::new(TargetKind::Folder {
+							path: std::env::current_dir()?,
+							file_name: Some("GenKeeper".into()),
+						}),
+						false => Target::new(TargetKind::LogDir {
+							file_name: Some("GenKeeper".into()),
+						}),
 					},
 					Target::new(TargetKind::Webview),
 				])

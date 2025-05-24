@@ -3,7 +3,7 @@ use crate::{Date, PersonId};
 // A relationship between two or more persons
 #[derive(Clone, Debug, PartialEq)]
 pub enum Link {
-	Parent(Parentage)
+	Parent(Parentage),
 }
 
 kdlize::impl_kdl_node!(Link, "link");

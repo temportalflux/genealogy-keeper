@@ -1,4 +1,3 @@
-
 mod id;
 pub use id::*;
 
@@ -35,6 +34,12 @@ impl<'doc> kdlize::FromKdlNode<'doc, ()> for Person {
 		let pronouns = node.children("pronoun").to().collect()?;
 		let sex_at_birth = node.child("sex").ok().next()?.to()?;
 		let notes = node.child("notes").ok().next()?.to()?;
-		Ok(Self { id, names, pronouns, sex_at_birth, notes })
+		Ok(Self {
+			id,
+			names,
+			pronouns,
+			sex_at_birth,
+			notes,
+		})
 	}
 }

@@ -55,21 +55,24 @@ impl kdlize::AsKdlNode for PersonName {
 
 #[cfg(test)]
 mod test {
-	use kdlize::FromKdlNode;
 	use super::*;
+	use kdlize::FromKdlNode;
 
 	#[test]
 	fn parse_minimal() -> miette::Result<()> {
 		let doc_str = "name Given1 Given2 (surname)Surname";
 		let data = crate::from_kdl!(PersonName, doc_str, "name", &());
-		assert_eq!(data, PersonName {
-			names: vec![
-				TypedName::Given("Given1".into()),
-				TypedName::Given("Given2".into()),
-				TypedName::Surname("Surname".into()),
-			],
-			started_at: None,
-		});
+		assert_eq!(
+			data,
+			PersonName {
+				names: vec![
+					TypedName::Given("Given1".into()),
+					TypedName::Given("Given2".into()),
+					TypedName::Surname("Surname".into()),
+				],
+				started_at: None,
+			}
+		);
 		Ok(())
 	}
 
@@ -77,16 +80,17 @@ mod test {
 	fn parse_started() -> miette::Result<()> {
 		let doc_str = "name Given1 (surname)Surname start=\"1990-06-15T05:00-05\"";
 		let data = crate::from_kdl!(PersonName, doc_str, "name", &());
-		assert_eq!(data, PersonName {
-			names: vec![
-				TypedName::Given("Given1".into()),
-				TypedName::Surname("Surname".into()),
-			],
-			started_at: Some(Date::from(time::OffsetDateTime::new_in_offset(
-				time::Date::from_calendar_date(1990, time::Month::June, 15).unwrap(),
-				time::Time::from_hms(5, 0, 0).unwrap(), time::UtcOffset::from_hms(-5, 0, 0).unwrap()
-			))),
-		});
+		assert_eq!(
+			data,
+			PersonName {
+				names: vec![TypedName::Given("Given1".into()), TypedName::Surname("Surname".into()),],
+				started_at: Some(Date::from(time::OffsetDateTime::new_in_offset(
+					time::Date::from_calendar_date(1990, time::Month::June, 15).unwrap(),
+					time::Time::from_hms(5, 0, 0).unwrap(),
+					time::UtcOffset::from_hms(-5, 0, 0).unwrap()
+				))),
+			}
+		);
 		Ok(())
 	}
 }
